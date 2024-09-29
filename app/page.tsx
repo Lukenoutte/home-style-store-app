@@ -9,9 +9,10 @@ export default function IndexPage() {
   const { loading, error, data } = useQuery<{ products: IProduct[] }>(GET_PRODUCTS);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
+  const products = data?.products
   return (
       <div className="flex gap-4">
-      { data && data.products.map((product, index) => (
+      { products && products.map((product, index) => (
           <ProductCard key={index} product={product} />
         ))
       }

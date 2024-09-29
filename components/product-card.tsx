@@ -1,16 +1,11 @@
 import { IProduct } from "@/types";
+import { formatCurrency } from "@/utils";
 import {Card, CardBody, CardFooter} from "@nextui-org/card";
 import {Image} from "@nextui-org/image";
 import Link from 'next/link';
 
 export default function Product ({ product }: { product: IProduct }) {
     const { mainImage } = product
-    function formatCurrency(value: number, currencyCode: string) {
-      const numberFormat = new Intl.NumberFormat('en-US', { 
-        style: 'currency', currency: currencyCode 
-      })
-      return numberFormat.format(value);
-    }
 
     return (
   <Link href={`/product/${product.id}`}>
